@@ -36,7 +36,7 @@ public class SimProcesos {
         proceso p = new proceso();//se crea el objeto para proceso
         p.setNom(nombre);
         p.setTejecucion(tiempo);
-        p.setTejecucion(tiempo);
+        p.setTrestante(tiempo);
 
         colaProcesos.encolar(p);
 
@@ -63,8 +63,12 @@ public class SimProcesos {
         }
     }
     public static void mostrarCola(){
-        
-    }
+        if(colaProcesos == null){
+            System.out.println("Cola vacía.");
+            return;
+        }
+            System.out.println(colaProcesos);
+        }
     public static void mostrarEstadisticas(){
         
     }

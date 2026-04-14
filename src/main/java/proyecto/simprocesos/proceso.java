@@ -60,4 +60,7 @@ public class proceso {
               }else
           return true; 
 }
+  public String toString(){
+      return "Proceso: "+ nom + "| Tiempo restante: " + trestante;
+  }
 }
