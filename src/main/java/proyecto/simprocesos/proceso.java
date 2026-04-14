@@ -54,5 +54,10 @@ public class proceso {
   public void ejecutarCiclo(){
       trestante--;
   }
-  
+  public boolean terminado(){
+      if(trestante>0){
+      return false;
+              }else
+          return true; 
+}
 }
