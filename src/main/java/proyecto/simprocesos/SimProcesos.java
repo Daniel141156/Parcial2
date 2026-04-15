@@ -72,7 +72,17 @@ public class SimProcesos {
         actual.ejecutarCiclo();
         System.out.println("Ejecutando: " + actual);
         if (!actual.terminado()) {
-            colaProcesos.encolar(actual);
+            //colaProcesos.encolar(actual);, se busca añadir la prioridad si es alta(1) o baja(2)
+            if(actual.getPrioridad()==1){
+                ColaEnlazada<proceso> aux = new ColaEnlazada();
+                aux.add(actual);
+                while(colaProcesos.size()>0){
+                    aux.add(actual);
+                }
+                colaProcesos = aux;
+            }else{
+                colaProcesos.encolar(actual);
+            }
         } else {
             if(procesosTerminados ==null){
                 procesosTerminados = new ColaEnlazada<>();
