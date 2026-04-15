@@ -58,7 +58,9 @@ public class SimProcesos {
     
     
     public static void ejecutarCiclo(){
-        //detecta si existe una cola
+        
+        int n = Input.nextInt("Cuantos Ciclos ejecutar?:");
+        for(int i=0;i<n;i++){
         if (colaProcesos == null|| colaProcesos.size()==0) {
             System.out.println("No hay procesos.");
             return;
@@ -76,9 +78,13 @@ public class SimProcesos {
            procesosTerminados.encolar(actual);
             stats.agrPrFin();
             stats.settTotal(stats.gettTotal() + actual.getTejecucion());
-            System.out.println("Proceso terminado: " + actual);
+            if(actual.terminado()==true){
+                System.out.println("Proceso terminado: "+actual);
+            }
         }
-        
+    }
+        System.out.println("Se ejecutaron "+n+" ciclos.");
+        System.out.println("Ciclos totales CPU: "+cpu.getCiclos());
     }
     
     

@@ -40,6 +40,6 @@ public estadistica(){}
     if(cantProcesos==0){
         return 0;
     }  
-    return (double)(tTotal/cantProcesos);
+    return (double)tTotal/cantProcesos;
   }
 }
