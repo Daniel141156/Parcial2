@@ -51,7 +51,9 @@ public class proceso {
         this.nom = nom;
     }
   public void ejecutarCiclo(){
+      if(trestante>0){
       trestante--;
+      }
   }
   public boolean terminado(){
           return trestante<=0; 
