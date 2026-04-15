@@ -1,6 +1,5 @@
 package proyecto.simprocesos;
 import com.murcia.utils.*;
-import java.util.HashSet;
 public class SimProcesos {
     private static ColaEnlazada<proceso> colaProcesos;
     private static ColaEnlazada<proceso> procesosTerminados;
