@@ -86,9 +86,9 @@ public class SimProcesos {
             //colaProcesos.encolar(actual);, se busca añadir la prioridad si es alta(1) o baja(2)
             if(actual.getPrioridad()==1){
                 ColaEnlazada<proceso> aux = new ColaEnlazada();
-                aux.add(actual);
+                aux.encolar(actual);
                 while(colaProcesos.size()>0){
-                    aux.add(actual);
+                    aux.encolar(colaProcesos.desencolar());
                 }
                 colaProcesos = aux;
             }else{
