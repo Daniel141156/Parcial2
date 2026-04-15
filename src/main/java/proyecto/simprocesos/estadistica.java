@@ -3,11 +3,27 @@ package proyecto.simprocesos;
  Esta clase va a tener los datos que se produzcan durante la ejecución
  */
 public class estadistica {
-    private int prFinalizados, ciclos, cantProcesos,tTotal;
+    private int prFinalizados, cantProcesos,tTotal;
 public estadistica(){}
-    public estadistica(int prFinalizados, int ciclos) {
+
+    public int getCantProcesos() {
+        return cantProcesos;
+    }
+
+    public void setCantProcesos(int cantProcesos) {
+        this.cantProcesos = cantProcesos;
+    }
+
+    public int gettTotal() {
+        return tTotal;
+    }
+
+    public void settTotal(int tTotal) {
+        this.tTotal = tTotal;
+    }
+
+    public estadistica(int prFinalizados) {
         this.prFinalizados = prFinalizados;
-        this.ciclos = ciclos;
     }
 
     public int getPrFinalizados() {
@@ -17,14 +33,6 @@ public estadistica(){}
     public void setPrFinalizados(int prFinalizados) {
         this.prFinalizados = prFinalizados;
     }
-
-    public int getCiclos() {
-        return ciclos;
-    }
-
-    public void setCiclos(int ciclos) {
-        this.ciclos = ciclos;
-    }
     public void agrPrFin(){
         prFinalizados++;
     }
@@ -32,6 +40,6 @@ public estadistica(){}
     if(cantProcesos==0){
         return 0;
     }  
-    return (tTotal/cantProcesos);
+    return (double)(tTotal/cantProcesos);
   }
 }

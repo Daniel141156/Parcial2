@@ -3,6 +3,8 @@ import com.murcia.utils.*;
 public class SimProcesos {
     private static ColaEnlazada<proceso> colaProcesos;
     private static ColaEnlazada<proceso> procesosTerminados;
+    private static estadistica stats = new estadistica();
+    private static CPU cpu = new CPU();
     public static void main(String[] args) {
         //opciones menu
         final char salir = '6';
@@ -28,8 +30,13 @@ public class SimProcesos {
             if (opcion == '4') mostrarTerminados();
             if (opcion == '5') mostrarEstadisticas();
          } while(opcion != salir);
-        //mostrarEstadisticas();<--pendiente 
+        Consola.clrscr();
+        Consola.gotoxy(0, 0);
+        System.out.println("Fin de la simulacion");
+        mostrarEstadisticas();
     }
+    
+    
     public static void crearProceso(){
         if (colaProcesos == null) {
             colaProcesos = new ColaEnlazada<>();
@@ -46,19 +53,18 @@ public class SimProcesos {
         colaProcesos.encolar(p);
 
         System.out.println("Proceso agregado a la cola de procesos.");
+        stats.setCantProcesos(stats.getCantProcesos() + 1);
     }
+    
+    
     public static void ejecutarCiclo(){
         //detecta si existe una cola
-        if (colaProcesos == null) {
+        if (colaProcesos == null|| colaProcesos.size()==0) {
             System.out.println("No hay procesos.");
             return;
         }
-        proceso actual = colaProcesos.desencolar();//toma un objeto existente en la cola y lo guarda en una variable que va a ser el proceso actual
-        //detecta si no hay elementos en la cola, buscar elemento en la libreria
-        if(actual==null){
-            System.out.println("La cola esta vacía.");
-            return;
-        }
+        cpu.avanzarCiclo();
+        proceso actual = colaProcesos.desencolar();
         actual.ejecutarCiclo();
         System.out.println("Ejecutando: " + actual);
         if (!actual.terminado()) {
@@ -68,9 +74,14 @@ public class SimProcesos {
                 procesosTerminados = new ColaEnlazada<>();
         }
            procesosTerminados.encolar(actual);
+            stats.agrPrFin();
+            stats.settTotal(stats.gettTotal() + actual.getTejecucion());
             System.out.println("Proceso terminado: " + actual);
         }
+        
     }
+    
+    
     public static void mostrarTerminados(){
         if (procesosTerminados == null) {
         System.out.println("No hay procesos terminados.");
@@ -87,19 +98,19 @@ public class SimProcesos {
         }
             System.out.println(colaProcesos);
         }
+    
+    
     public static void mostrarEstadisticas(){
-       int terminados = 0, enCola=0;
-    if (procesosTerminados != null) {
-        terminados = procesosTerminados.size();
-    }
+    int enCola=0;
     if (colaProcesos != null) {
         enCola = colaProcesos.size();
     } 
         System.out.println("----------ESTADÍSTICAS----------");
-        System.out.println("Procesos terminados: " + terminados);
+        System.out.println("Procesos creados: " + stats.getCantProcesos());
         System.out.println("Procesos en cola: "+ enCola);
-        int total = terminados + enCola;
-        System.out.println("Total:" + total);
+        System.out.println("Procesos terminados: " + stats.getPrFinalizados());
+        System.out.println("Ciclos ejecutados: " + cpu.getCiclos());
+        System.out.println("Tiempo promedio: " + stats.promedioT());
     }
     
 }
