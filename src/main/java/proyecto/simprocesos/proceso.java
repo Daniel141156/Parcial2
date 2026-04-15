@@ -1,25 +1,15 @@
 package proyecto.simprocesos;
 
 public class proceso {
-  private int id, prioridad, tejecucion, trestante;
+  private int prioridad, tejecucion, trestante;
   private String nom;
   public proceso(){}
-  public proceso(int id, int prioridad, int tejecucion, int trestante, String nom){
-      this.id=id;
+  public proceso(int prioridad, int tejecucion, int trestante, String nom){
       this.prioridad=prioridad;
       this.tejecucion=tejecucion;
       this.trestante=trestante;
       this.nom=nom;
   }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getPrioridad() {
         return prioridad;
     }

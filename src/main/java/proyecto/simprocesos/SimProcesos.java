@@ -7,14 +7,15 @@ public class SimProcesos {
     private static CPU cpu = new CPU();
     public static void main(String[] args) {
         //opciones menu
-        final char salir = '6';
+        final char salir = '7';
         String[] opciones = {
             "1-Crear proceso.",
-            "2-Ejecutar ciclo.",
+            "2-Ejecutar ciclos.",
             "3-Ver cola.",
             "4-Ver terminados.",
             "5-Ver estadísticas.",
-            "6-Salir."
+            "6-Buscar proceso.",
+            "7-Salir."
         };
         //creacion de objeto menu
         Menu menu = new Menu(opciones,'V' , "", "simulador CPU");
@@ -22,13 +23,14 @@ public class SimProcesos {
         do{
             Consola.clrscr();
             Consola.gotoxy(0, 0);
-            opcion = menu.select("Opcion[1-6]: ");
+            opcion = menu.select("Opcion[1-7]: ");
             Input.nextLine("");//opcion para reemplazar el scanner
             if (opcion == '1') crearProceso();
             if (opcion == '2') ejecutarCiclo();
             if (opcion == '3') mostrarCola();
             if (opcion == '4') mostrarTerminados();
             if (opcion == '5') mostrarEstadisticas();
+            if (opcion == '6') buscarProceso();
          } while(opcion != salir);
         Consola.clrscr();
         Consola.gotoxy(0, 0);
@@ -119,4 +121,28 @@ public class SimProcesos {
         System.out.println("Tiempo promedio: " + stats.promedioT());
     }
     
+    
+    public static void buscarProceso(){
+        if (colaProcesos==null||colaProcesos.size()==0){
+            System.out.println("No hay procesos.");
+            return;
+        }
+        String nombre = Input.nextLine("Nombre del proceso: ");
+        ColaEnlazada<proceso> aux = new ColaEnlazada<>();
+        boolean encontrado = false;
+        while (colaProcesos.size() > 0) {
+            proceso p = colaProcesos.desencolar();
+            if (nombre.equals(p.getNom())) {//se comparan dos strings a.equals(b)
+                System.out.println("Proceso encontrado: " + p);
+                encontrado = true;
+            }
+            aux.encolar(p);
+        }
+        while (aux.size()>0) {
+            colaProcesos.encolar(aux.desencolar());
+        }
+        if (!encontrado) {
+            System.out.println("Proceso no encontrado.");
+        }
+    }
 }
