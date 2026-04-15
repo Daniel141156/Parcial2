@@ -74,10 +74,35 @@ public class SimProcesos {
         
         int n = Input.nextInt("Cuantos Ciclos ejecutar?:");
         
+        
+        int disponibles =0;//limita los ciclos
+        if(colaProcesos!=null){
+            
+            ColaEnlazada<proceso> aux = new ColaEnlazada();
+            
+            while(colaProcesos.size()>0){
+                proceso p =colaProcesos.desencolar();
+                disponibles += p.getTrestante();
+                aux.encolar(p);
+           
+                
+                
+            }
+            while(aux.size()>0){
+                colaProcesos.encolar(aux.desencolar());
+            }
+        }
+        
+        if(n>disponibles){
+            System.out.println("Solo hay "+disponibles+" ciclos disponibles.");
+            n=disponibles;
+        }
+        
+        System.out.println("-------EJECUTANDO-------");
         for(int i=0;i<n;i++){
         if (colaProcesos == null|| colaProcesos.size()==0) {
             System.out.println("No hay procesos por ejecutar.");
-            return;
+            break;
         }
         cpu.avanzarCiclo();
         proceso actual = colaProcesos.desencolar();
