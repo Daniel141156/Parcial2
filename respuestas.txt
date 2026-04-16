@@ -18,4 +18,3 @@ El primero es en caso de que no haya procesos en la cola o que directamente no s
 El segundo empieza después de validar que exista una lista y que hayan procesos (SimProcesos.java líneas 188-193), en ese caso pide un nombre y si hay procesos con ese nombre los devuelve en forma de ("proceso encontrado"+ p), p incluye los datos del proceso mencionados anteriormente en la pregunta 1.
 y el tercero devuelve "Proceso no encontrado." después de buscar el nombre y no encontrar coincidencias en la cola.(SimProcesos.java líneas 199-201)
 Tiene un parámetro de entrada tipo String llamado nombre(SimProcesos.java líneas 181)
-

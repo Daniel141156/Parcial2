@@ -1,4 +1,4 @@
-//copia de el proyecto para el parcial.
+//copia de el proyecto para el parcial
 package proyecto.simprocesos;
 import com.murcia.utils.*;
 public class SimProcesos {
@@ -33,7 +33,7 @@ public class SimProcesos {
             if (opcion == '4') mostrarTerminados();
             if (opcion == '5') mostrarEstadisticas();
             if (opcion == '6') {
-            String nombre = Input.nextLine("Ingrese el nombre del método: ");
+               String nombre = Input.nextLine("Escriba el nombre del proceso: ");
                 buscarProceso(nombre);
             }
          } while(opcion != salir);
