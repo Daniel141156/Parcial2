@@ -1,0 +1,21 @@
+Pregunta 1:
+
+La clase proceso.java tiene los siguientes atributos: de enteros tiene: ID, prioridad, tejecucion, trestante, de tipo string: nom.
+
+El método ejecutarCiclo (proceso.java líneas 53-57) esta hecho para reducir el tiempo restante en 1 cada ves que se utiliza, 
+El método toString  (proceso.java líneas 62-68) retorna los datos del proceso cada vez que se usa, en forma de String e incluye datos de : nombre(nom), identificador(ID), tiempo restante(trestante) y prioridad. 
+El método terminado(proceso.java líneas 58-60) es de tipo boolean y su función es verificar si le quedan mas ciclos a un proceso, lo hace verificando si el tiempo restante es 0.
+
+La idea de esta clase es tener el tipo de dato que se va a guardar en  la cola, cada dato es un proceso
+y tiene un nombre en String, un id que enumera cada proceso, una prioridad que va a afectar como se trata el proceso al momento de ejecutar, 2 tiempos: el tiempo de ejecución, que es el tiempo con el que entra inicialmente
+y el tiempo restante, que inicialmente es igual al tiempo de ejecución, pero se reduce en 1 cada ves que se ejecuta un ciclo con el método ejecutarCiclo.
+=====================================================================================================================
+Pregunta 2:
+
+Se creo un método de búsqueda en la clase main, llamado buscarProceso(), con el fin de que el usuario tenga la opción de buscar por nombre en la cola de procesos en ejecución.(SimProcesos.java líneas 181-203)
+Tiene 3 posibles resultados:
+El primero es en caso de que no haya procesos en la cola o que directamente no se haya creado una cola de procesos, en cuyo caso devuelve "No hay procesos" (SimProcesos.java líneas 182-185)
+El segundo empieza después de validar que exista una lista y que hayan procesos (SimProcesos.java líneas 188-193), en ese caso pide un nombre y si hay procesos con ese nombre los devuelve en forma de ("proceso encontrado"+ p), p incluye los datos del proceso mencionados anteriormente en la pregunta 1.
+y el tercero devuelve "Proceso no encontrado." después de buscar el nombre y no encontrar coincidencias en la cola.(SimProcesos.java líneas 199-201)
+Tiene un parámetro de entrada tipo String llamado nombre(SimProcesos.java líneas 181)
+

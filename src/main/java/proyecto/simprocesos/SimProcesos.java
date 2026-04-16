@@ -1,4 +1,4 @@
-//copia de el proyecto para el parcial
+//copia de el proyecto para el parcial.
 package proyecto.simprocesos;
 import com.murcia.utils.*;
 public class SimProcesos {
@@ -32,7 +32,10 @@ public class SimProcesos {
             if (opcion == '3') mostrarCola();
             if (opcion == '4') mostrarTerminados();
             if (opcion == '5') mostrarEstadisticas();
-            if (opcion == '6') buscarProceso();
+            if (opcion == '6') {
+            String nombre = Input.nextLine("Ingrese el nombre del método: ");
+                buscarProceso(nombre);
+            }
          } while(opcion != salir);
         Consola.clrscr();
         Consola.gotoxy(0, 0);
@@ -175,12 +178,11 @@ public class SimProcesos {
     }
     
     
-    public static void buscarProceso(){
+    public static void buscarProceso(String nombre){
         if (colaProcesos==null||colaProcesos.size()==0){
             System.out.println("No hay procesos.");
             return;
         }
-        String nombre = Input.nextLine("Nombre del proceso: ");
         ColaEnlazada<proceso> aux = new ColaEnlazada<>();
         boolean encontrado = false;
         while (colaProcesos.size() > 0) {
