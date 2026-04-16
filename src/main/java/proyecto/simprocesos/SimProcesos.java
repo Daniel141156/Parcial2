@@ -1,3 +1,4 @@
+//copia de el proyecto para el parcial
 package proyecto.simprocesos;
 import com.murcia.utils.*;
 public class SimProcesos {
